@@ -9,7 +9,7 @@ function App() {
 
   mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-  function initializeMap(longitude: number, latitude: number) {
+  function initializeMap(longitude: number, latitude: number): void {
     const map = new mapboxgl.Map({
       container: 'map', 
       style: 'mapbox://styles/teamvattenfall/clhzzzikw00cv01pgew7dbrxs',
@@ -18,7 +18,7 @@ function App() {
     });
   }
 
-  async function initilizeISS() {
+  async function initilizeISS(): Promise<void> {
     const response = await fetch("http://api.open-notify.org/iss-now.json");
     const iss = await response.json();
     const longitude = iss.iss_position.longitude;
@@ -29,7 +29,7 @@ function App() {
   return (
     <>
     <div id="flex">
-      <img id="ISS" src="../src/assets/iss.png" />
+      <img className="fixed w-80 z-10 pointer-events-none" id="ISS" src="../src/assets/iss.png" />
       <div id="map"></div>
     </div>
     </>
