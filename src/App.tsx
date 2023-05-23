@@ -2,14 +2,12 @@ import './App.css';
 import mapboxgl from 'mapbox-gl';
 
 function App() {
-
-  // const myAccessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN
   async function initializeMap() {
     await new Promise((resolve) => {
       window.addEventListener('DOMContentLoaded', resolve);
     });
 
-    mapboxgl.accessToken = "pk.eyJ1IjoidGVhbXZhdHRlbmZhbGwiLCJhIjoiY2xkdWFkbHN4MDN3MTQzbzVpa3ZydnhobiJ9.s1jE7Ai0VbUH3fxiZojDPg";
+    mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
     const map = new mapboxgl.Map({
       container: 'map', 
       style: 'mapbox://styles/teamvattenfall/clhzzzikw00cv01pgew7dbrxs',
@@ -18,12 +16,14 @@ function App() {
     });
   }
   
-  // Call the async function to initialize the map
   initializeMap();
     
   return (
     <>
+    <div id="flex">
+      <img id="ISS" src="../src/assets/iss.png" />
       <div id="map"></div>
+    </div>
     </>
   )
 }
