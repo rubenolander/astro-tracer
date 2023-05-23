@@ -1,23 +1,31 @@
 import './App.css';
 import mapboxgl from 'mapbox-gl';
+import { useEffect } from "react";
 
 function App() {
-  async function initializeMap() {
-    await new Promise((resolve) => {
-      window.addEventListener('DOMContentLoaded', resolve);
-    });
+  useEffect(() => {
+    initilizeISS();
+  }, []);
 
-    mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
+  mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
+
+  function initializeMap(longitude: number, latitude: number) {
     const map = new mapboxgl.Map({
       container: 'map', 
       style: 'mapbox://styles/teamvattenfall/clhzzzikw00cv01pgew7dbrxs',
-      center: [-74.5, 40], 
+      center: [longitude, latitude], 
       zoom: 2.5, 
     });
   }
-  
-  initializeMap();
-    
+
+  async function initilizeISS() {
+    const response = await fetch("http://api.open-notify.org/iss-now.json");
+    const iss = await response.json();
+    const longitude = iss.iss_position.longitude;
+    const latitude = iss.iss_position.latitude;
+    initializeMap(longitude, latitude);
+  }
+
   return (
     <>
     <div id="flex">
