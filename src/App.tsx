@@ -4,12 +4,17 @@ import { useEffect } from "react";
 function App() {
   useEffect(() => {
     initializeISS();
+    const interval = setInterval(updateMap, 3000); //Set this to 3000 when showing.
+
+    return () => clearInterval(interval);
   }, []);
 
   mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
+  let map: mapboxgl.Map;
 
+  
   function initializeMap(longitude: number, latitude: number): void {
-    const map = new mapboxgl.Map({
+    map = new mapboxgl.Map({
       container: 'map', 
       style: 'mapbox://styles/teamvattenfall/clhzzzikw00cv01pgew7dbrxs',
       center: [longitude, latitude], 
@@ -23,6 +28,19 @@ function App() {
     const longitude = iss.iss_position.longitude;
     const latitude = iss.iss_position.latitude;
     initializeMap(longitude, latitude);
+  }
+
+  async function updateMap() {
+    const response = await fetch('http://api.open-notify.org/iss-now.json');
+    const iss = await response.json();
+    const longitude = iss.iss_position.longitude;
+    const latitude = iss.iss_position.latitude;
+    
+    if (map) {
+      map.flyTo({
+        center: [longitude,latitude],
+      });
+    }
   }
 
   return (
