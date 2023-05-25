@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 
+type Astronaut = {
+    craft: string, 
+    name: string,
+};
+
 const Astronauts = () => {
     useEffect(() => {
         getAstronauts();
@@ -12,7 +17,7 @@ const Astronauts = () => {
         let astronauts = await response.json();
         astronauts = astronauts.people;
         setIssCrewMember([]);
-        astronauts.map((astronaut: any) => {
+        astronauts.map((astronaut: Astronaut) => {
             if (astronaut.craft == "ISS") {
                 setIssCrewMember(prevMembers => [...prevMembers, astronaut.name]);
             }
@@ -23,7 +28,7 @@ const Astronauts = () => {
     return (
         <ul className="fixed p-2 z-10 text-white border-solid border-2 border-white-500 bg-black left-10 mt-[20%]">
             <p className="font-bold mb-1">Current ISS personnel</p>
-            {issCrewMember.map((crewMember, index) => (
+            {issCrewMember.map((crewMember: string, index: number) => (
                 <li key={index}>{crewMember}</li>
             ))}
         </ul>
