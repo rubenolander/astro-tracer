@@ -32,17 +32,15 @@ const MapData = (props:any) => {
         initializeMap(longitude, latitude);
         props.setLongitude(longitude);
         props.setLatitude(latitude);
+        return {longitude, latitude};
     }
     
     async function updateMap() {
-        const response = await fetch('http://api.open-notify.org/iss-now.json');
-        const iss = await response.json();
-        const longitude = iss.iss_position.longitude;
-        const latitude = iss.iss_position.latitude;
-        props.setLongitude(longitude);
-        props.setLatitude(latitude);
-        
         if (map) {
+            const { longitude, latitude } = await initializeISS();
+            props.setLongitude(longitude);
+            props.setLatitude(latitude);
+
           map.flyTo({
             center: [longitude,latitude],
             zoom: 2.15
