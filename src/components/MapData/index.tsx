@@ -1,11 +1,11 @@
-import {useEffect } from "react";
+import {useEffect} from "react";
 import mapboxgl from "mapbox-gl";
 
 const MapData = (props:any) => {
 
     useEffect(() => {
     initializeISS();
-    const interval = setInterval(updateMap, 3000); //Set this to 3000 when showing.
+    const interval = setInterval(updateMap, 3000); //Set this to 100 when showing.
     
     return () => clearInterval(interval);
     }, []);

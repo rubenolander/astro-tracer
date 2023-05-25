@@ -9,9 +9,12 @@ function App() {
 
   return (
     <>
-      <Astronauts />
-      <IssPositionCard latitude={latitude} longitude={longitude} />
-      <div className="flex justify-center items-center">
+      <div className="fixed z-10 ml-5 mt-[30vh]">
+        <Astronauts />
+        <IssPositionCard latitude={latitude} longitude={longitude} />
+      </div>
+      
+      <div className="flex relative justify-center items-center">
         <img className="w-80 z-10 pointer-events-none fixed" src="../src/assets/iss.png" />
         <MapData setLongitude={setLongitude} setLatitude={setLatitude}/>
       </div>
