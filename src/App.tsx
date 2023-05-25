@@ -1,7 +1,12 @@
 import mapboxgl from 'mapbox-gl';
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import IssPositionCard from './IssPositionCard';
+import Astronauts from './Astronauts';
 
 function App() {
+  const [longitude, setLongitude] = useState();
+  const [latitude, setLatitude] = useState();
+
   useEffect(() => {
     initializeISS();
     const interval = setInterval(updateMap, 3000); //Set this to 3000 when showing.
@@ -28,6 +33,8 @@ function App() {
     const longitude = iss.iss_position.longitude;
     const latitude = iss.iss_position.latitude;
     initializeMap(longitude, latitude);
+    setLongitude(longitude);
+    setLatitude(latitude);
   }
 
   async function updateMap() {
@@ -35,6 +42,8 @@ function App() {
     const iss = await response.json();
     const longitude = iss.iss_position.longitude;
     const latitude = iss.iss_position.latitude;
+    setLongitude(longitude);
+    setLatitude(latitude);
     
     if (map) {
       map.flyTo({
@@ -48,6 +57,8 @@ function App() {
     <div className="flex justify-center items-center">
       <img className="w-80 z-10 pointer-events-none fixed" src="../src/assets/iss.png" />
       <div className="w-[100vw] h-[100vh] relative" id="map"></div>
+      <Astronauts />
+      <IssPositionCard latitude={latitude} longitude={longitude} />
     </div>
     </>
   )
