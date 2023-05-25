@@ -55,14 +55,12 @@ function App() {
 
   return (
     <>
-        <Astronauts />
-        <IssPositionCard latitude={latitude} longitude={longitude} />
+      <Astronauts />
+      <IssPositionCard latitude={latitude} longitude={longitude} />
       <div className="flex justify-center items-center">
         <img className="w-80 z-10 pointer-events-none fixed" src="../src/assets/iss.png" />
         <div className="w-[100vw] h-[100vh] relative" id="map"></div>
       </div>
-
-
     </>
   )
 }

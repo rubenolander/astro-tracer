@@ -21,7 +21,8 @@ const Astronauts = () => {
     }; 
 
     return (
-        <ul className="fixed z-10 text-white border-solid border-2 border-white-500 bg-black left-10 mt-[20%]">
+        <ul className="fixed p-2 z-10 text-white border-solid border-2 border-white-500 bg-black left-10 mt-[20%]">
+            <p className="font-bold mb-1">Current ISS personnel</p>
             {issCrewMember.map((crewMember, index) => (
                 <li key={index}>{crewMember}</li>
             ))}

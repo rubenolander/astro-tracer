@@ -5,7 +5,7 @@ type position = {
 
 const IssPositionCard = (props: position) => {
     return (
-        <section className="fixed justify-self-start z-10 text-white border-solid border-2 border-white-500 bg-black right-10 mt-[25%]">
+        <section className="fixed p-2 justify-self-start z-10 text-white border-solid border-2 border-white-500 bg-black right-10 mt-[25%]">
             <p>Longitude: {props.longitude}</p>
             <p>Latitude: {props.latitude}</p>
         </section>
