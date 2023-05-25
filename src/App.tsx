@@ -23,7 +23,7 @@ function App() {
       container: 'map', 
       style: 'mapbox://styles/teamvattenfall/clhzzzikw00cv01pgew7dbrxs',
       center: [longitude, latitude], 
-      zoom: 2.5, 
+      zoom: 2.15,
     });
   }
 
@@ -48,18 +48,21 @@ function App() {
     if (map) {
       map.flyTo({
         center: [longitude,latitude],
+        zoom: 2.15
       });
     }
   }
 
   return (
     <>
-    <div className="flex justify-center items-center">
-      <img className="w-80 z-10 pointer-events-none fixed" src="../src/assets/iss.png" />
-      <div className="w-[100vw] h-[100vh] relative" id="map"></div>
-      <Astronauts />
-      <IssPositionCard latitude={latitude} longitude={longitude} />
-    </div>
+        <Astronauts />
+        <IssPositionCard latitude={latitude} longitude={longitude} />
+      <div className="flex justify-center items-center">
+        <img className="w-80 z-10 pointer-events-none fixed" src="../src/assets/iss.png" />
+        <div className="w-[100vw] h-[100vh] relative" id="map"></div>
+      </div>
+
+
     </>
   )
 }
