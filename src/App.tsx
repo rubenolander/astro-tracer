@@ -1,7 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import { useState, useEffect } from "react";
-import IssPositionCard from './IssPositionCard';
-import Astronauts from './Astronauts';
+import IssPositionCard from './components/IssPositionCard';
+import Astronauts from './components/Astronauts';
 
 function App() {
   const [longitude, setLongitude] = useState();
