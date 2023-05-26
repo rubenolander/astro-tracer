@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import ArrowUp from "../../assets/arrow-up.svg";
+import CrewIcon from "../../assets/crew-icon.svg"
 
 type Astronaut = {
     craft: string, 
@@ -26,15 +28,17 @@ const Astronauts = () => {
     }; 
 
     return (
-        <section className="min-w-[275px] p-2 z-10 text-white border-solid border-2 border-white-500 bg-black">
-            <div className="flex gap-4 justify-between ">
-                <p>&#128125;</p>
-                <p className="font-bold mb-1">Current ISS inhabitants</p>
-                <p>&#8593;</p>
+        <section className="shadow-[inset_1px_0.1px_2px_rgba(250,250,250,0.5)] flex flex-col z-10 text-white bg-[color:var(--menu-blue)] rounded-tr-xl">
+            <div className="cursor-pointer p-4 pl-2 flex justify-between border-b-[color:var(--menu-divider-blue)] border-b border-b-solid border-l-[color:var(--menu-select-blue)] border-l-8 border-l-solid">
+                <div className="flex">
+                    <img className="w-5 mr-2" src={CrewIcon} alt="crew icon" />
+                    <p className="font-bold">Current ISS crew</p>
+                </div>
+                <img className="w-5 ml-4" src={ArrowUp} alt="collapse menu" />
             </div>
-            <ul className="">
+            <ul className="border-b-[color:var(--menu-divider-blue)] border-b border-b-solid p-4 flex flex-col gap-1 text-sm bg-[color:var(--menu-expanded-blue)]">
                 {issCrewMember.map((crewMember: string, index: number) => (
-                    <li className="my-1 font-light text-sm" key={index}>{crewMember}</li>
+                    <li className="font-medium text-sm" key={index}>{crewMember}</li>
                     ))}
             </ul>
         </section>
