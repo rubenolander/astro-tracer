@@ -10,6 +10,7 @@ function App() {
   return (
     <>
       <div className="fixed z-10 ml-5 mt-[30vh]">
+        <img src="../src/assets/logo.svg" className="fixed top-10 left-10" />
         <Astronauts />
         <IssPositionCard latitude={latitude} longitude={longitude} />
       </div>

@@ -16,6 +16,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --menu-select-blue: var(#4083FF);
+  --menu-line-n-icon-blue: var(#5C687E);
+  --menu--blue: var(#1E2433);
+  --menu-expanded-blue: var(#191F2E);
 }
 
 body {
