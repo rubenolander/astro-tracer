@@ -18,8 +18,8 @@ const IssPositionCard = (props: Position) => {
             </div>
 
             <div className="rounded-br-xl p-4 flex flex-col gap-1 text-sm bg-[color:var(--menu-expanded-blue)]">
-                <p className="font-bold">Longitude: <span className="font-normal">{props.longitude}</span></p>
-                <p className="font-bold">Latitude: <span className="font-normal">{props.latitude}</span></p>
+                <p>Longitude: {props.longitude}</p>
+                <p>Latitude: {props.latitude}</p>
             </div>
         </section>
     )
