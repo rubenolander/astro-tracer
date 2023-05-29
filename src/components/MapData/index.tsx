@@ -1,11 +1,12 @@
 import {useEffect} from "react";
+import { useQuery } from "@tanstack/react-query";
 import mapboxgl from "mapbox-gl";
 
 const MapData = (props:any) => {
 
     useEffect(() => {
     initializeISS();
-    const interval = setInterval(updateMap, 3000); //Set this to 100 when showing.
+    const interval = setInterval(updateMap, 3000);
     
     return () => clearInterval(interval);
     }, []);
@@ -22,8 +23,24 @@ const MapData = (props:any) => {
                 zoom: 2.15,
             });
         }
-    }
+    };
 
+    // function initializeISS(){
+    // const {data, isLoading, isError} = useQuery({
+    //     queryKey: ["ISS"],
+    //     queryFn: async () => {
+    //         const response = await fetch('http://api.open-notify.org/iss-now.json');
+    //         const data = await response.json();
+    //         console.log(data);
+    //         const longitude = data.iss_position.longitude;
+    //         const latitude = data.iss_position.latitude;    
+    //         initializeMap(longitude, latitude);
+    //         props.setLongitude(longitude);
+    //         props.setLatitude(latitude);
+    //         return {longitude, latitude};    
+    //     } 
+    // })
+// }
     async function initializeISS() {
         const response = await fetch("http://api.open-notify.org/iss-now.json");
         const iss = await response.json();
