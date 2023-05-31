@@ -14,7 +14,8 @@ const IssPositionCard = (props: Position) => {
         <section 
             className={showPosition ? "flex flex-col z-10 text-white bg-[color:var(--menu-blue)] rounded-br-xl" : "flex flex-col z-10 text-white bg-[color:var(--menu-blue)]"}>
             <div 
-                onClick={() => setShowPosition(!showPosition ? true : false)} className={showPosition ? "cursor-pointer p-4 pl-2 flex justify-between border-b-[color:var(--menu-divider-blue)] border-b border-b-solid border-l-[color:var(--menu-select-blue)] border-l-8 border-l-solid" : "cursor-pointer p-4 pl-2 flex justify-between border-b-[color:var(--menu-divider-blue)] border-b border-b-solid border-l-[color:var(--menu-divider-blue)] border-l-8 border-l-solid"}
+                onClick={() => setShowPosition(!showPosition ? true : false)} 
+                className={`cursor-pointer p-4 pl-2 flex justify-between border-b-[color:var(--menu-divider-blue)] border-b border-b-solid border-l-8 border-l-solid" ${showPosition ? "border-l-[color:var(--menu-select-blue)]" : "border-l-[color:var(--menu-divider-blue)]"}`}
                 >
                 <div className="flex">
                     <img className="w-5 mr-2" src={PositionIcon} alt="position icon" />
