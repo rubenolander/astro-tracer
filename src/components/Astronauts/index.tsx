@@ -40,7 +40,7 @@ const Astronauts = () => {
         <img className="w-5 ml-4" src={showCrew ? ArrowUp : ArrowDown} alt="collapse menu" />
       </div>
       {showCrew && (
-        <ul className="border-b-[color:var(--menu-divider-blue)] border-b border-b-solid p-4 flex flex-col gap-1 text-sm bg-[color:var(--menu-expanded-blue)]">
+        <ul className="animate-grow border-b-[color:var(--menu-divider-blue)] border-b border-b-solid p-4 flex flex-col gap-1 text-sm bg-[color:var(--menu-expanded-blue)]">
           {isLoading ? (
             <li>Loading...</li>
           ) : isError ? (
