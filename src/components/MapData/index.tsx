@@ -2,10 +2,16 @@ import mapboxgl from "mapbox-gl";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
-const MapData = (props: any) => {
+
+type MapDataProps = {
+    setLongitude: (longitude:number) => void,
+    setLatitude: (latitude:number) => void
+};
+
+const MapData = (props: MapDataProps) => {
     const [newMap, setNewMap] = useState<mapboxgl.Map|null>(null);
 
-    const { isLoading, isError } = useQuery({
+    const { isLoading, isError } = useQuery<MapDataProps>({
         queryKey: ["coordinates"],
         queryFn: async () => {
             const response = await fetch('http://api.open-notify.org/iss-now.json');

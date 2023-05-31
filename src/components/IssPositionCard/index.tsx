@@ -3,12 +3,12 @@ import ArrowDown from "../../assets/arrow-down.svg"
 import PositionIcon from "../../assets/position-icon.svg"
 import { useState } from "react";
 
-type Position = {
-    latitude: number|undefined,
-    longitude: number|undefined,
-}
+type PositionProps = {
+    latitude?:number;
+    longitude?:number
+  };
 
-const IssPositionCard = (props: Position) => {
+const IssPositionCard = (props: PositionProps) => {
     const [showPosition, setShowPosition] = useState<boolean>(false);
     return (
         <section 

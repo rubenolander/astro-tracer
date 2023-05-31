@@ -4,8 +4,8 @@ import Astronauts from './components/Astronauts';
 import MapData from './components/MapData';
 
 function App() {
-  const [longitude, setLongitude] = useState();
-  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState<number>();
+  const [latitude, setLatitude] = useState<number>();
 
   return (
     <>
