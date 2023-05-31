@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      'lg': {'max': '1023px'},
+    },
     extend: {
       colors: {
         "menu-select-blue": "var(#4083FF)",
