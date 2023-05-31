@@ -17,7 +17,7 @@ function App() {
       
       <div className="flex relative justify-center items-center">
         <img className="w-80 z-10 pointer-events-none fixed" src="../src/assets/iss.png" />
-        {/* <MapData setLongitude={setLongitude} setLatitude={setLatitude}/> */}
+        <MapData setLongitude={setLongitude} setLatitude={setLatitude}/>
       </div>
     </>
   )
