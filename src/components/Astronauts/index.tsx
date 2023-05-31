@@ -10,23 +10,22 @@ type Astronaut = {
 };
 
 const Astronauts = () => {
-
-    const { data: issCrewMember = [], isLoading, isError } = useQuery({
-        queryKey:["astronauts"], 
-        queryFn: async () => {
-            const response = await fetch("http://api.open-notify.org/astros.json");
-            const astronauts = await response.json();
-            return astronauts.people
-            .filter((astronaut: Astronaut) => astronaut.craft === "ISS")
-            .map((astronaut: Astronaut) => astronaut.name);
-        }
-    });
-    
-    useEffect(() => {
-        setShowCrew(false);
-    }, [issCrewMember]);
-    
-    const [showCrew, setShowCrew] = useState(false);
+  const { data: issCrewMember = [], isLoading, isError } = useQuery<string[]>({
+      queryKey:["astronauts"], 
+      queryFn: async () => {
+          const response = await fetch("http://api.open-notify.org/astros.json");
+          const astronauts = await response.json();
+          return astronauts.people
+          .filter((astronaut: Astronaut) => astronaut.craft === "ISS")
+          .map((astronaut: Astronaut) => astronaut.name);
+      }
+  });
+  
+  useEffect(() => {
+      setShowCrew(false);
+  }, [issCrewMember]);
+  
+  const [showCrew, setShowCrew] = useState<boolean>(false);
 
   return (
     <section className="shadow-[inset_1px_0.1px_2px_rgba(250,250,250,0.5)] flex flex-col z-10 text-white bg-[color:var(--menu-blue)] rounded-tr-xl">

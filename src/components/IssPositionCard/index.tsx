@@ -9,14 +9,14 @@ type Position = {
 }
 
 const IssPositionCard = (props: Position) => {
-    const [showPosition, setShowPosition] = useState(false);
+    const [showPosition, setShowPosition] = useState<boolean>(false);
     return (
         <section 
             className={showPosition ? "flex flex-col z-10 text-white bg-[color:var(--menu-blue)] rounded-br-xl" : "flex flex-col z-10 text-white bg-[color:var(--menu-blue)]"}>
             <div 
-                onClick={() => setShowPosition(!showPosition ? true : false)} 
+                onClick={() => setShowPosition(!showPosition)} 
                 className={`cursor-pointer p-4 pl-2 flex justify-between border-b-[color:var(--menu-divider-blue)] border-b border-b-solid border-l-8 border-l-solid" ${showPosition ? "border-l-[color:var(--menu-select-blue)]" : "border-l-[color:var(--menu-divider-blue)]"}`}
-                >
+            >
                 <div className="flex">
                     <img className="w-5 mr-2" src={PositionIcon} alt="position icon" />
                     <p className="font-bold">Current ISS location</p>
