@@ -38,9 +38,8 @@ const Astronauts = () => {
           <p className="font-bold">Current ISS crew</p>
         </div>
         <img className="w-5 ml-4" src={showCrew ? ArrowUp : ArrowDown} alt="collapse menu" />
-      </div>
-      {showCrew && (
-        <ul className="animate-grow border-b-[color:var(--menu-divider-blue)] border-b border-b-solid p-4 flex flex-col gap-1 text-sm bg-[color:var(--menu-expanded-blue)] lg:border-none">
+        </div>
+        <ul className={`duration-300 overflow-hidden border-b-[color:var(--menu-divider-blue)] border-b border-b-solid flex flex-col text-sm bg-[color:var(--menu-expanded-blue)] ${showCrew ? "h-fit gap-1 p-4 ": "h-0 gap-0 p-0"}`}>
           {isLoading ? (
             <li>Loading...</li>
           ) : isError ? (
@@ -51,9 +50,9 @@ const Astronauts = () => {
                 {crewMember}
               </li>
             ))
-          )}
+            )}
         </ul>
-      )}
+
     </section>
   );
 };
