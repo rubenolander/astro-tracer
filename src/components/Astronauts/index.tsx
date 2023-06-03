@@ -28,7 +28,7 @@ const Astronauts = () => {
   const [showCrew, setShowCrew] = useState<boolean>(false);
 
   return (
-    <section className="shadow-[inset_1px_0.1px_2px_rgba(250,250,250,0.5)] flex flex-col z-10 text-white bg-[color:var(--menu-blue)] rounded-tr-xl lg:text-sm lg:shadow-none lg:rounded-tr-none">
+    <section className="z-50 shadow-[inset_1px_0.1px_2px_rgba(250,250,250,0.5)] flex flex-col z-10 text-white bg-[color:var(--menu-blue)] rounded-tr-xl lg:text-sm">
       <div
         onClick={() => setShowCrew(!showCrew)}
         className={`cursor-pointer p-4 pl-2 flex justify-between border-b-[color:var(--menu-divider-blue)] border-b border-b-solid border-l-8 border-l-solid" ${showCrew ? "border-l-[color:var(--menu-select-blue)]" : "border-l-[color:var(--menu-divider-blue)]"}`}
