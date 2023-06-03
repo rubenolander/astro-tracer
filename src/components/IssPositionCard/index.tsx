@@ -1,6 +1,6 @@
-import ArrowUp from "../../assets/arrow-up.svg"
-import ArrowDown from "../../assets/arrow-down.svg"
-import PositionIcon from "../../assets/position-icon.svg"
+import ArrowUp from "./../../assets/arrow-up.svg"
+import ArrowDown from "./../../assets/arrow-down.svg"
+import PositionIcon from "./../../assets/position-icon.svg"
 import { useState } from "react";
 
 type PositionProps = {
@@ -24,7 +24,7 @@ const IssPositionCard = (props: PositionProps) => {
                 <img className="w-5 ml-4" src={showPosition ? ArrowUp : ArrowDown} alt="collapse menu" />
             </div>
 
-            <div className={`duration-300 rounded-br-xl flex overflow-hidden flex-col gap-1 text-sm bg-[color:var(--menu-expanded-blue)] lg:text-xs ${showPosition ? "h-20 p-4 ": "h-0 p-0"}`}>
+            <div className={`duration-300 rounded-br-xl flex overflow-hidden flex-col gap-1 text-sm bg-[color:var(--menu-expanded-blue)] lg:text-xs ${showPosition ? "h-fit p-4 ": "h-0 p-0"}`}>
                 <p>Longitude: {props.longitude}</p>
                 <p>Latitude: {props.latitude}</p>
             </div>

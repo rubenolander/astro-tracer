@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import ArrowUp from "../../assets/arrow-up.svg";
-import ArrowDown from "../../assets/arrow-down.svg"
-import CrewIcon from "../../assets/crew-icon.svg"
+import ArrowUp from "./../../assets/arrow-up.svg";
+import ArrowDown from "./../../assets/arrow-down.svg"
+import CrewIcon from "./../../assets/crew-icon.svg"
 
 type Astronaut = {
-  craft: string,
+  iss: string,
   name: string,
 };
 
@@ -13,10 +13,10 @@ const Astronauts = () => {
   const { data: issCrewMember = [], isLoading, isError } = useQuery<string[]>({
       queryKey:["astronauts"], 
       queryFn: async () => {
-          const response = await fetch("http://api.open-notify.org/astros.json");
+          const response = await fetch("https://corquaid.github.io/international-space-station-APIs/JSON/people-in-space.json");
           const astronauts = await response.json();
           return astronauts.people
-          .filter((astronaut: Astronaut) => astronaut.craft === "ISS")
+          .filter((astronaut: Astronaut) => astronaut.iss)
           .map((astronaut: Astronaut) => astronaut.name);
       }
   });

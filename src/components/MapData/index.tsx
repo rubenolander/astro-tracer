@@ -2,7 +2,6 @@ import mapboxgl from "mapbox-gl";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
-
 type MapDataProps = {
     setLongitude: (longitude:number) => void,
     setLatitude: (latitude:number) => void
@@ -14,10 +13,10 @@ const MapData = (props: MapDataProps) => {
     const { isLoading, isError } = useQuery<MapDataProps>({
         queryKey: ["coordinates"],
         queryFn: async () => {
-            const response = await fetch('http://api.open-notify.org/iss-now.json');
+            const response = await fetch('https://api.wheretheiss.at/v1/satellites/25544');
             const data = await response.json();
-            const longitude = data.iss_position.longitude;
-            const latitude = data.iss_position.latitude;
+            const longitude = data.longitude;
+            const latitude = data.latitude;
             !newMap && initializeMap(longitude, latitude);
             newMap && updateMap(longitude, latitude);
             props.setLongitude(longitude);
